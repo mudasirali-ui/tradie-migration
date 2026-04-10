@@ -711,11 +711,21 @@ p {
   gap: 1.4rem;
 }
 
+.tc-gap-large {
+  gap: 4rem !important;
+}
+
 @media (min-width: 900px) {
 
   .tc-card-grid,
   .tc-grid-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 899px) {
+  .tc-gap-large {
+    gap: 2rem !important;
   }
 }
 

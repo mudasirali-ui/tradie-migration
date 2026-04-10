@@ -3,7 +3,7 @@ import AboutImg from '../assets/about_new_immigration_team_1772400965777.png'
 export function AboutPage() {
   return (
     <div className="tc-page">
-      <section className="tc-section tc-grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
+      <section className="tc-section tc-grid-2 tc-gap-large" style={{ alignItems: 'center' }}>
         <div className="tc-section-header" style={{ marginBottom: 0 }}>
           <p className="tc-eyebrow">About Tradie Migration</p>
           <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', lineHeight: '1.2' }}>
@@ -29,7 +29,7 @@ export function AboutPage() {
           <img
             src={AboutImg}
             alt="Immigration consultants meeting with tradespeople"
-            style={{ width: '100%', height: '100%', minHeight: '500px', display: 'block', objectFit: 'cover', objectPosition: 'center' }}
+            style={{ width: '100%', height: '100%', minHeight: '300px', display: 'block', objectFit: 'cover', objectPosition: 'center' }}
           />
         </div>
       </section>

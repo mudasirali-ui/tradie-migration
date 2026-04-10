@@ -59,7 +59,7 @@ export function ContactPage() {
             or an Australian employer.
           </p>
         </div>
-        <div className="tc-grid-2" style={{ alignItems: 'flex-start' }}>
+        <div className="tc-grid-2 tc-gap-large" style={{ alignItems: 'flex-start' }}>
           <div className="tc-card" style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
             <h2>Enquiry details</h2>
             <form className="tc-form" onSubmit={handleSubmit}>
@@ -198,7 +198,7 @@ export function ContactPage() {
               <img
                 src={ContactImg}
                 alt="Professional immigration consultants in office"
-                style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover', maxHeight: '450px' }}
+                style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover', maxHeight: '350px' }}
               />
             </div>
           </div>

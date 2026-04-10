@@ -18,13 +18,13 @@ export function ForTradiesPage() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '4rem', alignItems: 'flex-start' }}>
+        <div className="tc-grid-2 tc-gap-large" style={{ alignItems: 'flex-start' }}>
           {/* Left Column - Image */}
           <div style={{ borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 12px 40px rgba(0,0,0,0.4)', alignSelf: 'stretch', display: 'flex' }}>
             <img
               src={TradieImg}
               alt="Professional Indian Electrician looking at blueprints"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '500px' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '300px' }}
             />
           </div>
 

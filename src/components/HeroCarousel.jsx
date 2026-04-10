@@ -185,7 +185,6 @@ export function HeroCarousel() {
             <video
               src={HeroVideo}
               autoPlay
-              muted
               controls
               style={{ width: '100%', height: '100%', display: 'block', outline: 'none', objectFit: 'cover' }}
             />

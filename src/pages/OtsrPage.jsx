@@ -12,7 +12,7 @@ export function OtsrPage() {
           The Offshore Technical Skills Record (OTSR) is the formal skills assessment that recognises your existing trade experience and identifies training gaps you need to become a fully licensed electrician in Australia.
           </p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '4rem', alignItems: 'flex-start', marginBottom: '4rem' }}>
+        <div className="tc-grid-2 tc-gap-large" style={{ alignItems: 'flex-start', marginBottom: '4rem' }}>
           {/* Left Column - Content */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div className="tc-card" style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
@@ -47,7 +47,7 @@ It compares your existing skills to the Australian standards and outlines additi
             <img
               src={OtsrImg}
               alt="South Asian electrician discussing official technical skills and records with an Australian assessor"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '400px' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '300px' }}
             />
           </div>
         </div>

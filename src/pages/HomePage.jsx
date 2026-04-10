@@ -28,7 +28,7 @@ export function HomePage() {
           <div
             className="tc-card tc-card-ghost"
             style={{
-              minWidth: 440,
+              width: '100%',
               maxWidth: 560,
               margin: '0 auto',
               textAlign: 'left',

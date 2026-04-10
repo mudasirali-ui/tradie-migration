@@ -16,7 +16,7 @@ export function ForEmployersPage() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '4rem', alignItems: 'flex-start' }}>
+        <div className="tc-grid-2 tc-gap-large" style={{ alignItems: 'flex-start' }}>
           {/* Left Column - Content */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div className="tc-card" style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
@@ -43,7 +43,7 @@ export function ForEmployersPage() {
             <img
               src={EmployerImg}
               alt="Professional Australian employers shaking hands with a successful South Asian tradesman"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '400px' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '300px' }}
             />
           </div>
         </div>
