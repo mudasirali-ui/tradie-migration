@@ -1,4 +1,4 @@
-import ElectricianLogo from '../assets/electrician-logo.png'
+import TradieLogo from '../assets/tradie-logo.png'
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -6,11 +6,13 @@ export function Footer() {
   return (
     <footer className="tc-footer">
       <div className="tc-footer-inner">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem' }}>
-          <img src={ElectricianLogo} alt="Electrician Logo" style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: '50%', background: 'transparent' }} />
-          <div>
-            <div className="tc-footer-brand">Tradie Migration Australia</div>
-            <p className="tc-footer-text">
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', maxWidth: '400px' }}>
+          <div style={{ width: 70, height: 70, borderRadius: '50%', backgroundColor: '#fff', boxShadow: '0 2px 10px rgba(0,0,0,0.08)', flexShrink: 0, marginTop: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+            <img src={TradieLogo} alt="Tradie Migration Logo" style={{ width: '250%', height: '250%', objectFit: 'contain' }} />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '4px' }}>
+            <div className="tc-footer-brand" style={{ marginBottom: '0.4rem', lineHeight: 1.1 }}>Tradie Migration Australia</div>
+            <p className="tc-footer-text" style={{ margin: 0, lineHeight: 1.5 }}>
               Connecting skilled overseas electricians with Australian employers,
               training providers and licensing pathways.
             </p>
@@ -46,5 +48,3 @@ export function Footer() {
     </footer>
   )
 }
-
-

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import ElectricianLogo from '../assets/electrician-logo.png'
+import TradieLogo from '../assets/tradie-logo.png'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
@@ -11,9 +11,11 @@ export function Navbar() {
   return (
     <header className="tc-header">
       <div className="tc-header-inner">
-        <Link to="/" className="tc-logo" onClick={close} style={{ display: 'flex', alignItems: 'center', gap: '0.7rem' }}>
-          <img src={ElectricianLogo} alt="Electrician Logo" style={{ width: 44, height: 44, objectFit: 'cover', borderRadius: '50%', background: 'transparent' }} />
-          <span className="tc-logo-text">
+        <Link to="/" className="tc-logo" onClick={close} style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+          <div style={{ width: 60, height: 60, borderRadius: '50%', backgroundColor: '#fff', boxShadow: '0 2px 10px rgba(0,0,0,0.08)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+            <img src={TradieLogo} alt="Tradie Migration Logo" style={{ width: '250%', height: '250%', objectFit: 'contain' }} />
+          </div>
+          <span className="tc-logo-text" style={{ transform: 'translateY(1px)' }}>
             Tradie Migration <span className="tc-logo-sub">Australia</span>
           </span>
         </Link>
@@ -61,5 +63,3 @@ export function Navbar() {
     </header>
   )
 }
-
-

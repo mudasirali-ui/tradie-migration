@@ -17,10 +17,10 @@ export function HeroCarousel() {
         <div className="tc-hero-copy">
           <p className="tc-eyebrow animate-fade-up">Migration & Licensing Pathways</p>
           <h1 className="animate-fade-up delay-100">
-          Turn your trade skills into Australian Residency.
+            Turn your trade skills into Australian Residency.
           </h1>
           <p className="tc-hero-sub animate-fade-up delay-200">
-          Tradie Migration helps electricians and tradespeople understand and apply for specific trade based work visas in Australia, plan skills gap training and help connect with employers who are ready to support your journey.
+            Tradie Migration helps electricians and tradespeople understand and apply for specific trade based work visas in Australia, plan skills gap training and help connect with employers who are ready to support your journey.
           </p>
           <div className="tc-hero-cta animate-fade-up delay-300">
             <Link to="/tradies" className="tc-btn tc-btn-primary lg">
