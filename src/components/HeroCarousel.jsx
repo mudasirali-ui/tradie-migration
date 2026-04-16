@@ -14,7 +14,7 @@ export function HeroCarousel() {
       const timer = setTimeout(() => {
         setIsVideoOpen(true)
         sessionStorage.setItem('hasSeenVideo', 'true')
-      }, 3000)
+      }, 6000)
       return () => clearTimeout(timer)
     }
   }, [])
@@ -59,7 +59,7 @@ export function HeroCarousel() {
               <Link to="/employers" className="tc-btn tc-btn-secondary lg">
                 I&apos;m an Employer
               </Link>
-              <button 
+              <button
                 onClick={() => setIsVideoOpen(true)}
                 style={{
                   display: 'inline-flex',
@@ -130,7 +130,7 @@ export function HeroCarousel() {
 
       {/* Video Modal Popup */}
       {isVideoOpen && (
-        <div 
+        <div
           style={{
             position: 'fixed',
             top: 0, left: 0, right: 0, bottom: 0,
@@ -145,7 +145,7 @@ export function HeroCarousel() {
           }}
           onClick={() => setIsVideoOpen(false)}
         >
-          <div 
+          <div
             style={{
               position: 'relative',
               width: '100%',
@@ -162,7 +162,7 @@ export function HeroCarousel() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* The Cross Icon to close */}
-            <button 
+            <button
               onClick={() => setIsVideoOpen(false)}
               style={{
                 position: 'absolute',
@@ -192,7 +192,7 @@ export function HeroCarousel() {
               }}
               aria-label="Close video"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
             </button>
             <video
               src={HeroVideo}
