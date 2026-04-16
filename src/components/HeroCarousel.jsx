@@ -4,8 +4,20 @@ import HeroImg from '../assets/hero_migrant_tradie_1772394008320.png'
 import HeroVideo from '../assets/video/Tradie Migration website video.mp4'
 
 export function HeroCarousel() {
-  // Open the video modal by default when website loads
-  const [isVideoOpen, setIsVideoOpen] = useState(true)
+  // Open the video modal after a short delay when website loads, but only once per session
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
+
+  useEffect(() => {
+    const hasSeenVideo = sessionStorage.getItem('hasSeenVideo')
+
+    if (!hasSeenVideo) {
+      const timer = setTimeout(() => {
+        setIsVideoOpen(true)
+        sessionStorage.setItem('hasSeenVideo', 'true')
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [])
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
