@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import ContactImg from '../assets/contact_new_professionals_1772400332350.png'
+import { submitContact } from '../api'
 
 export function ContactPage() {
   const [resumeFile, setResumeFile] = useState(null)
   const [resumeError, setResumeError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitSuccess, setSubmitSuccess] = useState('')
+  const [submitError, setSubmitError] = useState('')
 
   const handleResumeChange = (event) => {
     const file = event.target.files?.[0]
@@ -25,26 +29,38 @@ export function ContactPage() {
     setResumeError('')
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
-    if (!resumeFile) {
-      alert('Please upload your resume/CV before submitting.')
-      return
+    setSubmitSuccess('')
+    setSubmitError('')
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    const payload = {
+      firstName: formData.get('firstName')?.toString().trim() || '',
+      lastName: formData.get('lastName')?.toString().trim() || '',
+      email: formData.get('email')?.toString().trim() || '',
+      phone: formData.get('phone')?.toString().trim() || '',
+      iAm: formData.get('iAm')?.toString() || '',
+      currentCountry: formData.get('currentCountry')?.toString().trim() || '',
+      subject: formData.get('subject')?.toString().trim() || '',
+      message: formData.get('message')?.toString().trim() || '',
+      resume: resumeFile,
     }
 
-    const formData = new FormData(event.target)
-    formData.append('resume', resumeFile)
-
-    // This is where you would send formData to your backend/API.
-    // For now, we simply show a confirmation and log the data.
-    // eslint-disable-next-line no-console
-    console.log('Contact enquiry submitted with resume:', {
-      fields: Object.fromEntries(formData.entries()),
-      resumeName: resumeFile.name,
-    })
-
-    alert('Thank you. Your enquiry and resume have been captured on this form.')
+    try {
+      setIsSubmitting(true)
+      await submitContact(payload)
+      setSubmitSuccess('Thank you! Your enquiry has been submitted successfully.')
+      setResumeFile(null)
+      setResumeError('')
+      form.reset()
+    } catch (error) {
+      setSubmitError(error.message || 'Something went wrong while submitting your enquiry.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -66,27 +82,28 @@ export function ContactPage() {
               <div className="tc-form-row tc-form-row-inline">
                 <label>
                   First name
-                  <input type="text" placeholder="Jane" />
+                  <input type="text" name="firstName" placeholder="Jane" required />
                 </label>
                 <label>
                   Last name
-                  <input type="text" placeholder="Smith" />
+                  <input type="text" name="lastName" placeholder="Smith" required />
                 </label>
               </div>
               <div className="tc-form-row tc-form-row-inline">
                 <label>
                   Email
-                  <input type="email" placeholder="you@example.com" />
+                  <input type="email" name="email" placeholder="you@example.com" required />
                 </label>
                 <label>
                   Phone (incl. country code)
-                  <input type="tel" placeholder="+61 4XX XXX XXX" />
+                  <input type="tel" name="phone" placeholder="+61 4XX XXX XXX" />
                 </label>
               </div>
               <div className="tc-form-row tc-form-row-inline">
                 <label>
                   I am
-                  <select>
+                  <select name="iAm" defaultValue="">
+                    <option value="" disabled>Select one</option>
                     <option value="tradie">An overseas electrician / tradie</option>
                     <option value="employer">An Australian employer</option>
                     <option value="provider">A training provider</option>
@@ -95,7 +112,7 @@ export function ContactPage() {
                 </label>
                 <label>
                   Current country
-                  <input type="text" placeholder="e.g. United Kingdom" />
+                  <input type="text" name="currentCountry" placeholder="e.g. United Kingdom" />
                 </label>
               </div>
               <div className="tc-form-row">
@@ -103,6 +120,7 @@ export function ContactPage() {
                   Subject
                   <input
                     type="text"
+                    name="subject"
                     placeholder="OTSR, licensing pathway or employer enquiry"
                   />
                 </label>
@@ -153,6 +171,7 @@ export function ContactPage() {
                     </span>
                     <input
                       type="file"
+                      name="resume"
                       accept=".pdf,.doc,.docx"
                       onChange={handleResumeChange}
                       style={{
@@ -174,13 +193,35 @@ export function ContactPage() {
                 <label>
                   Message
                   <textarea
+                    name="message"
                     rows="5"
                     placeholder="Tell us briefly about your experience, timeframe and what you would like help with."
                   />
                 </label>
               </div>
-              <button type="submit" className="tc-btn tc-btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '0.9rem' }}>
-                Submit enquiry
+              {submitSuccess && (
+                <p style={{ color: '#4ade80', marginTop: '0.5rem' }}>
+                  {submitSuccess}
+                </p>
+              )}
+              {submitError && (
+                <p className="tc-error" style={{ color: '#f87171', marginTop: '0.5rem' }}>
+                  {submitError}
+                </p>
+              )}
+              <button
+                type="submit"
+                className="tc-btn tc-btn-primary"
+                disabled={isSubmitting}
+                style={{
+                  width: '100%',
+                  marginTop: '1rem',
+                  padding: '0.9rem',
+                  opacity: isSubmitting ? 0.7 : 1,
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                }}
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit enquiry'}
               </button>
             </form>
           </div>
