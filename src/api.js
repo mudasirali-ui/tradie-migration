@@ -1,5 +1,9 @@
-const BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
-const PROJECT_ID = import.meta.env.VITE_PROJECT_ID || ''
+const DEFAULT_LOCAL_API = 'http://127.0.0.1:8000'
+const DEFAULT_PROD_API = 'https://web-production-992b9.up.railway.app'
+
+const envBase = (import.meta.env.VITE_API_URL || '').trim()
+const BASE = (envBase || (import.meta.env.PROD ? DEFAULT_PROD_API : DEFAULT_LOCAL_API)).replace(/\/+$/, '')
+const PROJECT_ID = (import.meta.env.VITE_PROJECT_ID || 'tradie migration').trim()
 
 export const submitContact = async (formData) => {
   const data = new FormData()
