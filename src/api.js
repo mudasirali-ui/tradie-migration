@@ -1,8 +1,26 @@
 const DEFAULT_LOCAL_API = 'http://127.0.0.1:8000'
-const DEFAULT_PROD_API = 'https://web-production-992b9.up.railway.app'
+const DEFAULT_PROD_API = 'https://master-backend-production-0e27.up.railway.app'
 
-const envBase = (import.meta.env.VITE_API_URL || '').trim()
-const BASE = (envBase || (import.meta.env.PROD ? DEFAULT_PROD_API : DEFAULT_LOCAL_API)).replace(/\/+$/, '')
+const normalizeApiBase = (value) => {
+  // Protect against misconfigured env values like "VITE_API_URL = https://..."
+  const cleaned = (value || '')
+    .trim()
+    .replace(/^VITE_API_URL\s*=\s*/i, '')
+    .replace(/^['"]|['"]$/g, '')
+    .replace(/\/+$/, '')
+
+  if (!cleaned || !/^https?:\/\//i.test(cleaned)) return ''
+
+  try {
+    const url = new URL(cleaned)
+    return `${url.origin}${url.pathname}`.replace(/\/+$/, '')
+  } catch {
+    return ''
+  }
+}
+
+const envBase = normalizeApiBase(import.meta.env.VITE_API_URL)
+const BASE = envBase || (import.meta.env.PROD ? DEFAULT_PROD_API : DEFAULT_LOCAL_API)
 const PROJECT_ID = (import.meta.env.VITE_PROJECT_ID || 'tradie migration').trim()
 
 export const submitContact = async (formData) => {
